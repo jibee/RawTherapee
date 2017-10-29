@@ -137,7 +137,7 @@ endif()
 
 include_directories(BEFORE "${CMAKE_CURRENT_BINARY_DIR}")
 
-add_library(rtengine ${RTENGINESOURCEFILES})
+add_library(rtengine SHARED ${RTENGINESOURCEFILES})
 add_dependencies(rtengine UpdateInfo)
 
 # It may be nice to store library version too
@@ -165,3 +165,4 @@ target_link_libraries(rtengine rtexif
     )
 
 install(FILES ${CAMCONSTSFILE} DESTINATION "${DATADIR}" PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ)
+install(TARGETS rtengine DESTINATION ${LIBDIR})
